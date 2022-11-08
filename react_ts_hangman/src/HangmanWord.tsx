@@ -1,9 +1,11 @@
-import React from 'react'
+type HangmanWordProps={
+  wordToGuess:string
+  guessedLetters:string[]
+}
 
-const HangmanWord = () => {
+const HangmanWord = ({wordToGuess,guessedLetters}:HangmanWordProps) => {
 
-    const word="test"
-    const guessedLetters=["t","e"]
+    
   return (
     <div  style={{
         display: "flex",
@@ -14,7 +16,7 @@ const HangmanWord = () => {
         fontFamily: "monospace",
       }}>
         {
-            word.split("").map((lett,i)=>(
+            wordToGuess.split("").map((lett,i)=>(
                 <span key={i} style={{borderBottom:"0.1em solid black"}}>
                     <span style={{
                         visibility:guessedLetters.includes(lett)?"visible":"hidden"
