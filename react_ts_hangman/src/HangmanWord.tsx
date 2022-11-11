@@ -1,9 +1,10 @@
 type HangmanWordProps={
+  reveal?:boolean
   wordToGuess:string
   guessedLetters:string[]
 }
 
-const HangmanWord = ({wordToGuess,guessedLetters}:HangmanWordProps) => {
+const HangmanWord = ({wordToGuess,guessedLetters,reveal=false}:HangmanWordProps) => {
 
     
   return (
@@ -19,7 +20,8 @@ const HangmanWord = ({wordToGuess,guessedLetters}:HangmanWordProps) => {
             wordToGuess.split("").map((lett,i)=>(
                 <span key={i} style={{borderBottom:"0.1em solid black"}}>
                     <span style={{
-                        visibility:guessedLetters.includes(lett)?"visible":"hidden"
+                        visibility:guessedLetters.includes(lett) || reveal?"visible":"hidden",
+                        color:reveal && !guessedLetters.includes(lett)?"red":"black"
                     }}>{lett}</span> 
                 </span>
             ))
